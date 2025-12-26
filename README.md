@@ -46,8 +46,9 @@ In our fast-paced digital world, memories often get lost in endless photo galler
 ### 🎨 **Beautiful Visual Design**
 - **Memory Clustering**: Nearby memories group together with intensity-based colors
 - **Custom Colors**: Personalize each memory with your favorite colors
-- **Responsive Tooltips**: Hover over memories to see rich previews with scrollable content
-- **Zoom-Adaptive Interface**: UI elements scale beautifully at every zoom level
+- **Smart Hover Tooltips**: 3-second hover delay shows memory previews above markers
+- **Click-to-Zoom**: Click memories to zoom in and view detailed information
+- **Scrollable Content**: Long descriptions are scrollable within tooltips
 - **Dark Theme**: Elegant dark interface that's easy on the eyes
 
 ### 🔐 **Privacy & Control**
@@ -79,6 +80,7 @@ In our fast-paced digital world, memories often get lost in endless photo galler
 4. **🎨 Customize**: Add photos, choose colors, write your story
 5. **🔄 Sync**: Watch your memories appear across all your devices
 6. **👥 Share**: Decide whether to keep memories private or share with the world
+7. **⏱️ Discover**: Hover over memory markers for 3+ seconds to see quick previews
 
 ## 🛠️ For Developers
 
@@ -143,7 +145,9 @@ src/
 - **Smooth Animations**: Fluid transitions and hover effects
 
 ### 📱 **Adaptive User Experience**
-- **Zoom-Responsive UI**: Interface elements scale with map zoom level
+- **Smart Interaction**: 3-second hover for previews, click for detailed view with zoom
+- **Custom Date Support**: Set any date for your memories, not just today
+- **Synchronized Controls**: Dropdown and toggle controls stay in sync
 - **Context-Aware Tooltips**: Positioning adapts to screen edges and content size
 - **Progressive Enhancement**: Works great on all devices and connection speeds
 
