@@ -332,7 +332,7 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
             clearTimeout(tooltipTimeoutRef.current);
           }
           
-          // Set 3-second delay for hover tooltip
+          // Set 2-second delay for hover tooltip
           hoverTimeoutRef.current = setTimeout(() => {
             const markerLatLng = L.latLng(memory.latitude, memory.longitude);
             const containerPoint = map.latLngToContainerPoint(markerLatLng);
@@ -342,7 +342,7 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
               position: { x: containerPoint.x, y: containerPoint.y },
               zoom: currentZoom
             });
-          }, 3000); // 3 seconds delay
+          }, 2000); // 2 seconds delay
         })
         .on('mouseout', () => {
           // Clear hover timeout when mouse leaves
