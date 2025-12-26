@@ -149,6 +149,7 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<{ memory: Memory; position: { x: number; y: number }; zoom: number } | null>(null);
   const tooltipTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Initialize map
   useEffect(() => {
@@ -308,6 +309,11 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
       const marker = L.marker([memory.latitude, memory.longitude], { icon })
         .on('click', (e: L.LeafletMouseEvent) => {
           L.DomEvent.stopPropagation(e);
+          // Clear any pending hover tooltip
+          if (hoverTimeoutRef.current) {
+            clearTimeout(hoverTimeoutRef.current);
+          }
+          setActiveTooltip(null);
           // First zoom to the memory location
           map.flyTo([memory.latitude, memory.longitude], Math.max(map.getZoom(), 14), {
             duration: 0.8,
@@ -316,8 +322,38 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           setTimeout(() => {
             onMemoryClick(memory);
           }, 800);
+        })
+        .on('mouseover', (e: L.LeafletMouseEvent) => {
+          // Clear any existing timeouts
+          if (hoverTimeoutRef.current) {
+            clearTimeout(hoverTimeoutRef.current);
+          }
+          if (tooltipTimeoutRef.current) {
+            clearTimeout(tooltipTimeoutRef.current);
+          }
+          
+          // Set 3-second delay for hover tooltip
+          hoverTimeoutRef.current = setTimeout(() => {
+            const markerLatLng = L.latLng(memory.latitude, memory.longitude);
+            const containerPoint = map.latLngToContainerPoint(markerLatLng);
+            const currentZoom = map.getZoom();
+            setActiveTooltip({
+              memory,
+              position: { x: containerPoint.x, y: containerPoint.y },
+              zoom: currentZoom
+            });
+          }, 3000); // 3 seconds delay
+        })
+        .on('mouseout', () => {
+          // Clear hover timeout when mouse leaves
+          if (hoverTimeoutRef.current) {
+            clearTimeout(hoverTimeoutRef.current);
+          }
+          // Hide tooltip after short delay
+          tooltipTimeoutRef.current = setTimeout(() => {
+            setActiveTooltip(null);
+          }, 300);
         });
-        // Removed hover events - no more hover tooltips
       
       clusterGroup.addLayer(marker);
       markersRef.current.set(memory.id, marker);
@@ -481,6 +517,36 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
       </div>
 
 
+
+      {/* 3-Second Hover Tooltip */}
+      {activeTooltip && (
+        <div 
+          className="fixed z-[2000] pointer-events-auto"
+          style={{
+            left: `${activeTooltip.position.x}px`,
+            top: `${activeTooltip.position.y - 220}px`,
+            transform: 'translateX(-50%)',
+            transformOrigin: 'center bottom'
+          }}
+          onMouseEnter={() => {
+            if (tooltipTimeoutRef.current) {
+              clearTimeout(tooltipTimeoutRef.current);
+            }
+          }}
+          onMouseLeave={() => {
+            tooltipTimeoutRef.current = setTimeout(() => {
+              setActiveTooltip(null);
+            }, 100);
+          }}
+        >
+          <div className="memory-tooltip-container-custom">
+            <div 
+              className="memory-tooltip"
+              dangerouslySetInnerHTML={{ __html: createTooltipContent(activeTooltip.memory) }}
+            />
+          </div>
+        </div>
+      )}
 
       {/* Custom CSS for marker styling */}
       <style>{`
