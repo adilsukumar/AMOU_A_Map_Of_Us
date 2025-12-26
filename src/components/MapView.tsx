@@ -332,7 +332,7 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
             clearTimeout(tooltipTimeoutRef.current);
           }
           
-          // Set 2-second delay for hover tooltip
+          // Set 1-second delay for hover tooltip
           hoverTimeoutRef.current = setTimeout(() => {
             const markerLatLng = L.latLng(memory.latitude, memory.longitude);
             const containerPoint = map.latLngToContainerPoint(markerLatLng);
@@ -342,7 +342,7 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
               position: { x: containerPoint.x, y: containerPoint.y },
               zoom: currentZoom
             });
-          }, 2000); // 2 seconds delay
+          }, 1000); // 1 second delay
         })
         .on('mouseout', () => {
           // Clear hover timeout when mouse leaves
@@ -785,13 +785,14 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
         .memory-tooltip-meta {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 6px;
           font-size: 11px;
           color: #8b95a5;
           font-family: 'Playfair Display', serif;
           margin-top: auto; /* Push to bottom */
-          padding-top: 12px; /* Even more space from content above */
-          padding-bottom: 4px; /* Extra bottom padding */
+          padding-top: 8px;
+          padding-bottom: 4px;
         }
       `}</style>
     </div>

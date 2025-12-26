@@ -46,7 +46,7 @@ In our fast-paced digital world, memories often get lost in endless photo galler
 ### 🎨 **Beautiful Visual Design**
 - **Memory Clustering**: Nearby memories group together with intensity-based colors
 - **Custom Colors**: Personalize each memory with your favorite colors
-- **Smart Hover Tooltips**: 2-second hover delay shows memory previews above markers
+- **Smart Hover Tooltips**: 1-second hover delay shows memory previews above markers
 - **Click-to-Zoom**: Click memories to zoom in and view detailed information
 - **Scrollable Content**: Long descriptions are scrollable within tooltips
 - **Dark Theme**: Elegant dark interface that's easy on the eyes
@@ -80,7 +80,7 @@ In our fast-paced digital world, memories often get lost in endless photo galler
 4. **🎨 Customize**: Add photos, choose colors, write your story
 5. **🔄 Sync**: Watch your memories appear across all your devices
 6. **👥 Share**: Decide whether to keep memories private or share with the world
-7. **⏱️ Discover**: Hover over memory markers for 2+ seconds to see quick previews
+7. **⏱️ Discover**: Hover over memory markers for 1+ second to see quick previews
 
 ## 🛠️ For Developers
 
