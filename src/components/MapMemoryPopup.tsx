@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, ImagePlus, X } from 'lucide-react';
 import ColorPicker from './ColorPicker';
 import { useAuth } from '@/contexts/AuthContext';
@@ -37,6 +37,11 @@ const MapMemoryPopup = ({ onSubmit, onClose, coordinates, position }: MapMemoryP
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { user } = useAuth();
+
+  // Sync visibility dropdown with isPublic toggle
+  useEffect(() => {
+    setVisibility(isPublic ? 'public' : 'me');
+  }, [isPublic]);
 
   const handlePhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
