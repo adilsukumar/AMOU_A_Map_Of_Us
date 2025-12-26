@@ -1,0 +1,7 @@
+FORCE SYNC - All files updated
+Timestamp: 2025-01-27
+- 2-column EditMemoryModal layout
+- Clean map labels without black outlines
+- Continent names restored
+- Auto-topic generation
+- Scrollable tooltips

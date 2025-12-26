@@ -1,0 +1,109 @@
+PROPRIETARY SOFTWARE LICENSE AGREEMENT
+
+A Map Of Memories (AMOM) - Commercial Application
+Copyright (c) 2025 Adil Sukumar. All Rights Reserved.
+
+================================================================================
+                            IMPORTANT LEGAL NOTICE
+================================================================================
+
+THIS SOFTWARE IS PROPRIETARY AND CONFIDENTIAL. UNAUTHORIZED USE IS PROHIBITED.
+
+This software and associated documentation files (the "Software") are the 
+exclusive property of Adil Sukumar and are protected by copyright law and 
+international treaties. The Software is being developed as a commercial 
+application and contains valuable trade secrets and proprietary information.
+
+================================================================================
+                              LICENSE TERMS
+================================================================================
+
+PERSONAL USE ONLY LICENSE
+
+Subject to the terms and conditions of this License, the copyright holder 
+grants you a limited, non-exclusive, non-transferable, revocable license to:
+
+PERMITTED USES:
+✓ View the source code for educational purposes only
+✓ Run the software locally for personal, non-commercial use
+✓ Study the code for learning purposes only
+
+STRICTLY PROHIBITED:
+✗ Commercial use of any kind
+✗ Redistribution, sublicensing, or sharing
+✗ Modification for commercial purposes
+✗ Creating derivative works for commercial use
+✗ Using this code in any business, startup, or commercial project
+✗ Selling, renting, or monetizing the software in any way
+✗ Copying the concept, design, or implementation for commercial purposes
+✗ Using any part of this code in competing applications
+✗ Reverse engineering for commercial purposes
+✗ Publishing or distributing modified versions
+✗ Using the software to provide services to third parties
+
+================================================================================
+                            INTELLECTUAL PROPERTY
+================================================================================
+
+This Software contains proprietary algorithms, unique implementations, and 
+innovative features that represent significant intellectual property value. 
+All rights, title, and interest in and to the Software remain exclusively 
+with Adil Sukumar.
+
+The following are considered proprietary and confidential:
+- Memory clustering algorithms with intensity-based coloring
+- Custom tooltip positioning and scaling systems
+- Auto-topic generation algorithms
+- Database schema and architecture
+- UI/UX design patterns and implementations
+- Integration patterns and methodologies
+
+================================================================================
+                              ENFORCEMENT
+================================================================================
+
+VIOLATION CONSEQUENCES:
+Any violation of this license will result in:
+1. Immediate termination of all rights under this license
+2. Legal action seeking monetary damages
+3. Injunctive relief to stop unauthorized use
+4. Recovery of attorney fees and court costs
+5. Criminal prosecution where applicable
+
+MONITORING:
+This repository and its usage are actively monitored. All downloads, forks, 
+and usage patterns are tracked and logged for legal purposes.
+
+================================================================================
+                               DISCLAIMERS
+================================================================================
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER 
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+================================================================================
+                              CONTACT INFORMATION
+================================================================================
+
+For licensing inquiries, commercial use permissions, or legal matters:
+
+Copyright Holder: Adil Sukumar
+Email: adilsukumar24@gmail.com
+
+================================================================================
+                               ACKNOWLEDGMENTS
+================================================================================
+
+Special thanks to Mayank Mehra & Snehal Dixit for their contributions to the 
+development of this proprietary software.
+
+================================================================================
+
+This license is effective immediately and remains in effect until terminated.
+Last Updated: December 2025
+
+UNAUTHORIZED USE WILL BE PROSECUTED TO THE FULL EXTENT OF THE LAW.
