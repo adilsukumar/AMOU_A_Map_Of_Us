@@ -705,10 +705,10 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           z-index: 2;
         }
         .memory-tooltip {
-          padding: 12px 14px;
+          padding: 16px 18px 20px 18px; /* Increased padding, especially bottom */
           min-width: 200px;
           max-width: 320px;
-          height: 180px; /* Back to previous size */
+          height: 200px; /* Increased height for more space */
           display: flex;
           flex-direction: column;
         }
@@ -739,9 +739,9 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           line-height: 1.3;
         }
         .memory-tooltip-desc-container {
-          max-height: 100px; /* Back to previous size */
+          max-height: 110px; /* Increased for more description space */
           overflow-y: auto;
-          margin-bottom: 8px;
+          margin-bottom: 12px; /* More space before meta */
           padding-right: 4px;
           flex: 1; /* Take remaining space */
         }
@@ -773,6 +773,8 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           font-size: 11px;
           color: #8b95a5;
           font-family: 'Playfair Display', serif;
+          margin-top: auto; /* Push to bottom */
+          padding-top: 8px; /* Extra space from content above */
         }
       `}</style>
     </div>
