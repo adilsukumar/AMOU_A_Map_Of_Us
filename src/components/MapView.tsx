@@ -316,26 +316,8 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           setTimeout(() => {
             onMemoryClick(memory);
           }, 800);
-        })
-        .on('mouseover', (e: L.LeafletMouseEvent) => {
-          if (tooltipTimeoutRef.current) {
-            clearTimeout(tooltipTimeoutRef.current);
-          }
-          // Get the actual marker position on screen
-          const markerLatLng = L.latLng(memory.latitude, memory.longitude);
-          const containerPoint = map.latLngToContainerPoint(markerLatLng);
-          const currentZoom = map.getZoom();
-          setActiveTooltip({
-            memory,
-            position: { x: containerPoint.x, y: containerPoint.y },
-            zoom: currentZoom
-          });
-        })
-        .on('mouseout', () => {
-          tooltipTimeoutRef.current = setTimeout(() => {
-            setActiveTooltip(null);
-          }, 300); // 300ms delay before hiding
         });
+        // Removed hover events - no more hover tooltips
       
       clusterGroup.addLayer(marker);
       markersRef.current.set(memory.id, marker);
@@ -498,35 +480,7 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
         </button>
       </div>
 
-      {/* Custom Persistent Tooltip */}
-      {activeTooltip && (
-        <div 
-          className="fixed z-[2000] pointer-events-auto"
-          style={{
-            left: `${activeTooltip.position.x}px`,
-            top: `${activeTooltip.position.y - 220}px`, // Increased offset
-            transform: 'translateX(-50%)', // Removed scaling
-            transformOrigin: 'center bottom'
-          }}
-          onMouseEnter={() => {
-            if (tooltipTimeoutRef.current) {
-              clearTimeout(tooltipTimeoutRef.current);
-            }
-          }}
-          onMouseLeave={() => {
-            tooltipTimeoutRef.current = setTimeout(() => {
-              setActiveTooltip(null);
-            }, 100);
-          }}
-        >
-          <div className="memory-tooltip-container-custom">
-            <div 
-              className="memory-tooltip"
-              dangerouslySetInnerHTML={{ __html: createTooltipContent(activeTooltip.memory) }}
-            />
-          </div>
-        </div>
-      )}
+
 
       {/* Custom CSS for marker styling */}
       <style>{`
