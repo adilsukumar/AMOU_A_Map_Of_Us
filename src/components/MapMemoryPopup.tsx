@@ -136,14 +136,22 @@ const MapMemoryPopup = ({ onSubmit, onClose, coordinates, position }: MapMemoryP
                     <div className="absolute top-full left-0 right-0 mt-1 bg-[#2a3142] border border-[#3d4555] rounded-lg shadow-xl z-10 overflow-hidden">
                       <button
                         type="button"
-                        onClick={() => { setVisibility('me'); setIsPublic(false); setShowDropdown(false); }}
+                        onClick={() => { 
+                          setVisibility('me'); 
+                          setIsPublic(false); 
+                          setShowDropdown(false); 
+                        }}
                         className="w-full px-3 py-2 text-left font-playfair text-[#e8eaed] hover:bg-[#353d4f] transition-colors text-sm"
                       >
                         For me
                       </button>
                       <button
                         type="button"
-                        onClick={() => { setVisibility('public'); setIsPublic(true); setShowDropdown(false); }}
+                        onClick={() => { 
+                          setVisibility('public'); 
+                          setIsPublic(true); 
+                          setShowDropdown(false); 
+                        }}
                         className="w-full px-3 py-2 text-left font-playfair text-[#e8eaed] hover:bg-[#353d4f] transition-colors text-sm"
                       >
                         Public
@@ -278,7 +286,11 @@ const MapMemoryPopup = ({ onSubmit, onClose, coordinates, position }: MapMemoryP
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
-                    onClick={() => setIsPublic(!isPublic)}
+                    onClick={() => {
+                      const newIsPublic = !isPublic;
+                      setIsPublic(newIsPublic);
+                      setVisibility(newIsPublic ? 'public' : 'me');
+                    }}
                     className={`w-10 h-5 rounded-full transition-colors relative flex-shrink-0 ${
                       isPublic ? 'bg-[#6b7a94]' : 'bg-[#3d4555]'
                     }`}
