@@ -52,6 +52,7 @@ const MapPage = () => {
     is_public: boolean;
     photo_url: string | null;
     category: string;
+    created_at: string;
   }) => {
     await createMemory(memoryData);
     setPopupData(null);

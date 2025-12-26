@@ -15,6 +15,7 @@ interface MapMemoryPopupProps {
     is_public: boolean;
     photo_url: string | null;
     category: string;
+    created_at: string;
   }) => void;
   onClose: () => void;
   coordinates: { lat: number; lng: number };
@@ -81,6 +82,13 @@ const MapMemoryPopup = ({ onSubmit, onClose, coordinates, position }: MapMemoryP
       photoUrl = await uploadPhoto();
     }
     
+    // Create date from user inputs
+    const customDate = new Date(
+      parseInt(year) || new Date().getFullYear(),
+      (parseInt(month) || new Date().getMonth() + 1) - 1, // Month is 0-indexed
+      parseInt(day) || new Date().getDate()
+    );
+    
     onSubmit({
       title: description.slice(0, 50) || 'Memory',
       description: description,
@@ -90,6 +98,7 @@ const MapMemoryPopup = ({ onSubmit, onClose, coordinates, position }: MapMemoryP
       is_public: isPublic,
       photo_url: photoUrl,
       category: category,
+      created_at: customDate.toISOString(),
     });
     
     setUploading(false);
