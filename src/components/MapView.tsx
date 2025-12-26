@@ -308,7 +308,14 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
       const marker = L.marker([memory.latitude, memory.longitude], { icon })
         .on('click', (e: L.LeafletMouseEvent) => {
           L.DomEvent.stopPropagation(e);
-          onMemoryClick(memory);
+          // First zoom to the memory location
+          map.flyTo([memory.latitude, memory.longitude], Math.max(map.getZoom(), 14), {
+            duration: 0.8,
+          });
+          // Then show the memory details after zoom
+          setTimeout(() => {
+            onMemoryClick(memory);
+          }, 800);
         })
         .on('mouseover', (e: L.LeafletMouseEvent) => {
           if (tooltipTimeoutRef.current) {
@@ -492,45 +499,34 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
       </div>
 
       {/* Custom Persistent Tooltip */}
-      {activeTooltip && (() => {
-        const zoom = activeTooltip.zoom;
-        const scale = Math.min(Math.max(zoom / 10, 0.6), 1.2);
-        
-        // Calculate dynamic offset based on content length
-        const description = activeTooltip.memory.description || '';
-        const baseOffset = 120;
-        const contentHeight = Math.min(description.length / 3, 80); // Estimate height from text length
-        const dynamicOffset = baseOffset + contentHeight;
-        
-        return (
-          <div 
-            className="fixed z-[2000] pointer-events-auto"
-            style={{
-              left: `${activeTooltip.position.x}px`,
-              top: `${activeTooltip.position.y - 180}px`, // Fixed offset for consistency
-              transform: `translateX(-50%) scale(${scale})`,
-              transformOrigin: 'center bottom'
-            }}
-            onMouseEnter={() => {
-              if (tooltipTimeoutRef.current) {
-                clearTimeout(tooltipTimeoutRef.current);
-              }
-            }}
-            onMouseLeave={() => {
-              tooltipTimeoutRef.current = setTimeout(() => {
-                setActiveTooltip(null);
-              }, 100);
-            }}
-          >
-            <div className="memory-tooltip-container-custom">
-              <div 
-                className="memory-tooltip"
-                dangerouslySetInnerHTML={{ __html: createTooltipContent(activeTooltip.memory) }}
-              />
-            </div>
+      {activeTooltip && (
+        <div 
+          className="fixed z-[2000] pointer-events-auto"
+          style={{
+            left: `${activeTooltip.position.x}px`,
+            top: `${activeTooltip.position.y - 220}px`, // Increased offset
+            transform: 'translateX(-50%)', // Removed scaling
+            transformOrigin: 'center bottom'
+          }}
+          onMouseEnter={() => {
+            if (tooltipTimeoutRef.current) {
+              clearTimeout(tooltipTimeoutRef.current);
+            }
+          }}
+          onMouseLeave={() => {
+            tooltipTimeoutRef.current = setTimeout(() => {
+              setActiveTooltip(null);
+            }, 100);
+          }}
+        >
+          <div className="memory-tooltip-container-custom">
+            <div 
+              className="memory-tooltip"
+              dangerouslySetInnerHTML={{ __html: createTooltipContent(activeTooltip.memory) }}
+            />
           </div>
-        );
-      })()}
+        </div>
+      )}
 
       {/* Custom CSS for marker styling */}
       <style>{`
@@ -705,10 +701,10 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           z-index: 2;
         }
         .memory-tooltip {
-          padding: 16px 18px 20px 18px; /* Increased padding, especially bottom */
+          padding: 20px 24px 28px 24px; /* Much more padding, especially bottom */
           min-width: 200px;
           max-width: 320px;
-          height: 200px; /* Increased height for more space */
+          height: 220px; /* Even taller */
           display: flex;
           flex-direction: column;
         }
@@ -774,7 +770,8 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           color: #8b95a5;
           font-family: 'Playfair Display', serif;
           margin-top: auto; /* Push to bottom */
-          padding-top: 8px; /* Extra space from content above */
+          padding-top: 12px; /* Even more space from content above */
+          padding-bottom: 4px; /* Extra bottom padding */
         }
       `}</style>
     </div>
