@@ -46,12 +46,12 @@ const MemoryCard = ({ memory, onClose, onDelete, onUpdate }: MemoryCardProps) =>
       
       {/* Card - Centered Modal Style */}
       <div className="fixed inset-0 z-[1006] flex items-center justify-center p-4 pointer-events-none">
-        <div className="w-full max-w-sm pointer-events-auto animate-scale-in">
+        <div className="w-full max-w-lg pointer-events-auto animate-scale-in">
           <div className="bg-[#1e2433] rounded-2xl shadow-2xl overflow-hidden border border-[#2d3548]">
             
             {/* Photo Header */}
             {memory.photo_url && (
-              <div className="relative h-44">
+              <div className="relative h-52">
                 <img 
                   src={memory.photo_url} 
                   alt={memory.title}
@@ -61,7 +61,7 @@ const MemoryCard = ({ memory, onClose, onDelete, onUpdate }: MemoryCardProps) =>
             )}
             
             {/* Content */}
-            <div className="p-5">
+            <div className="p-7">
               {/* Title Row */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3 flex-1 min-w-0">
@@ -72,7 +72,7 @@ const MemoryCard = ({ memory, onClose, onDelete, onUpdate }: MemoryCardProps) =>
                       boxShadow: `0 0 12px ${memory.color}60`
                     }}
                   />
-                  <h3 className="text-lg font-playfair text-white font-medium truncate">
+                  <h3 className="text-xl font-playfair text-white font-semibold truncate">
                     {memory.title}
                   </h3>
                 </div>
@@ -93,18 +93,20 @@ const MemoryCard = ({ memory, onClose, onDelete, onUpdate }: MemoryCardProps) =>
               
               {/* Description */}
               {memory.description && (
-                <p className="text-[#a0a8b8] font-playfair italic text-sm mb-4 leading-relaxed">
-                  {memory.description}
-                </p>
+                <div className="max-h-32 overflow-y-auto mb-5">
+                  <p className="text-[#a0a8b8] font-playfair text-base mb-0 leading-relaxed font-medium">
+                    {memory.description}
+                  </p>
+                </div>
               )}
               
               {/* Meta Info */}
-              <div className="flex items-center gap-4 text-xs text-[#6b7a94] mb-5 pb-5 border-b border-[#2d3548]">
-                <span className="font-playfair">
+              <div className="flex items-center gap-4 text-sm text-[#6b7a94] mb-6 pb-6 border-b border-[#2d3548]">
+                <span className="font-playfair font-medium">
                   {formatDate(memory.created_at)}
                 </span>
-                <span className="flex items-center gap-1">
-                  <MapPin size={11} />
+                <span className="flex items-center gap-1 font-medium">
+                  <MapPin size={13} />
                   {formatCoordinates(memory.latitude, memory.longitude)}
                 </span>
               </div>
@@ -114,9 +116,9 @@ const MemoryCard = ({ memory, onClose, onDelete, onUpdate }: MemoryCardProps) =>
                 {isOwner && (
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 
+                    className="flex-1 flex items-center justify-center gap-2 py-3.5 
                              bg-[#2a3142] hover:bg-[#353d4f] text-white 
-                             font-playfair text-sm rounded-xl transition-colors"
+                             font-playfair text-base font-medium rounded-xl transition-colors"
                   >
                     <Pencil size={15} />
                     Edit
@@ -129,7 +131,7 @@ const MemoryCard = ({ memory, onClose, onDelete, onUpdate }: MemoryCardProps) =>
                         onDelete(memory.id);
                       }
                     }}
-                    className="flex items-center justify-center py-3 px-4 
+                    className="flex items-center justify-center py-3.5 px-4 
                              bg-[#2a3142] hover:bg-red-500/20 text-[#6b7a94] hover:text-red-400
                              rounded-xl transition-colors"
                   >
@@ -138,9 +140,9 @@ const MemoryCard = ({ memory, onClose, onDelete, onUpdate }: MemoryCardProps) =>
                 )}
                 <button
                   onClick={onClose}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 
+                  className="flex-1 flex items-center justify-center gap-2 py-3.5 
                            bg-white hover:bg-gray-100 text-[#1e2433] 
-                           font-playfair text-sm font-medium rounded-xl transition-colors"
+                           font-playfair text-base font-semibold rounded-xl transition-colors"
                 >
                   <Check size={15} />
                   Done

@@ -52,7 +52,7 @@ In our fast-paced digital world, memories often get lost in endless photo galler
 - **Dark Theme**: Elegant dark interface that's easy on the eyes
 
 ### 🔐 **Privacy & Control**
-- **Your Choice**: Make memories public to inspire others, or keep them private
+- **Your Choice**: Make memories public to  others, or keep them private
 - **Ownership Rights**: Only you can edit or delete your own memories
 - **Anonymous Option**: Share memories without revealing your identity
 - **Secure Authentication**: Protected by Supabase's enterprise-grade security
@@ -108,7 +108,7 @@ Deployment:   GitHub Pages + Vercel Ready
 # Clone the repository
 git clone https://github.com/adilsukumar/AMOM-A_Map_Of_Memories.git
 cd AMOM-A_Map_Of_Memories
-
+inspire
 # Install dependencies
 npm install
 

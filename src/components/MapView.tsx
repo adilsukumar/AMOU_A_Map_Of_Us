@@ -721,10 +721,10 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           z-index: 2;
         }
         .memory-tooltip {
-          padding: 20px 24px 28px 24px; /* Much more padding, especially bottom */
-          min-width: 200px;
-          max-width: 320px;
-          height: 220px; /* Even taller */
+          padding: 28px 32px 36px 32px; /* Much more padding for bigger tooltip */
+          min-width: 280px;
+          max-width: 420px;
+          height: 280px; /* Much taller */
           display: flex;
           flex-direction: column;
         }
@@ -735,7 +735,7 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           margin-bottom: 8px;
         }
         .memory-tooltip-category {
-          font-size: 12px;
+          font-size: 14px;
           color: #e8eaed;
           font-family: 'Playfair Display', serif;
         }
@@ -747,24 +747,24 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           border-radius: 4px;
         }
         .memory-tooltip-title {
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 600;
           color: #e8eaed;
           font-family: 'Playfair Display', serif;
-          margin-bottom: 8px;
-          line-height: 1.3;
+          margin-bottom: 12px;
+          line-height: 1.4;
         }
         .memory-tooltip-desc-container {
-          max-height: 110px; /* Increased for more description space */
+          max-height: 140px; /* Even more space for description */
           overflow-y: auto;
-          margin-bottom: 12px; /* More space before meta */
-          padding-right: 4px;
+          margin-bottom: 16px; /* More space before meta */
+          padding-right: 6px;
           flex: 1; /* Take remaining space */
         }
         .memory-tooltip-desc {
-          font-size: 12px;
+          font-size: 14px;
           color: #c4c9d4;
-          line-height: 1.4;
+          line-height: 1.5;
           font-family: 'Playfair Display', serif;
           word-wrap: break-word;
         }
@@ -786,13 +786,13 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 6px;
-          font-size: 11px;
+          gap: 8px;
+          font-size: 13px;
           color: #8b95a5;
           font-family: 'Playfair Display', serif;
           margin-top: auto; /* Push to bottom */
-          padding-top: 8px;
-          padding-bottom: 4px;
+          padding-top: 12px;
+          padding-bottom: 6px;
         }
       `}</style>
     </div>
