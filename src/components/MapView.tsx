@@ -524,7 +524,7 @@ const MapView = ({ memories, onMemoryClick, onMapClick, selectedMemory, isPlacem
           className="fixed z-[2000] pointer-events-auto"
           style={{
             left: `${activeTooltip.position.x}px`,
-            top: `${activeTooltip.position.y - 220}px`,
+            top: `${activeTooltip.position.y - 320}px`, // Increased offset to show above marker
             transform: 'translateX(-50%)',
             transformOrigin: 'center bottom'
           }}
